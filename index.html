@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Celo B. Wenceslao | My Photo Site</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="meter" role="status">
+  <span>Get to know me</span>
+  <div class="track"><div class="fill" id="fill"></div></div>
+  <span id="pct">0/4</span>
+  <button id="theme" aria-label="Toggle dark mode">🌙</button>
+</div>
+
+<div class="wrap">
+  <header class="hero ent">
+    <button class="photo" id="photo" aria-label="My photo" disabled>CW<small hidden>click to change photo</small></button>
+    <div>
+      <p id="hi" style="margin:0;font-weight:600">Hi there! 👋 I'm</p>
+      <h1>Celo B. <mark>Wenceslao</mark></h1>
+      <div class="role">I'm <span id="typed"></span></div>
+      <p>Welcome to my corner of the internet. Flip, tap, and play around below. Every little thing is clickable, and there's a surprise waiting for you at the end.</p>
+      <div class="cta">
+        <a class="btn" href="#photos">See my photos</a>
+        <button class="btn alt" id="spin">Random fact</button>
+      </div>
+    </div>
+  </header>
+
+  <h2 id="hobbies">My hobbies <small>tap a card to flip it</small></h2>
+  <div class="flips">
+    <button class="flip" aria-label="Gaming card"><div><span class="face"><span class="e">🎮</span><b>Gaming</b></span><span class="face back" style="--c:var(--mint)">Favorite way to unwind and challenge my brain. (Edit me!)</span></div></button>
+    <button class="flip" aria-label="Music card"><div><span class="face"><span class="e">🎧</span><b>Music</b></span><span class="face back" style="--c:var(--yellow)">A playlist for every mood, especially while coding. (Edit me!)</span></div></button>
+    <button class="flip" aria-label="Photography card"><div><span class="face"><span class="e">📸</span><b>Photography</b></span><span class="face back" style="--c:var(--sky)">I love catching small moments that most people miss. (Edit me!)</span></div></button>
+    <button class="flip" aria-label="Movies and series card"><div><span class="face"><span class="e">🎬</span><b>Movies &amp; Series</b></span><span class="face back" style="--c:var(--sky)">Movie nights and binge-watching series are my favorite way to relax. (Edit me!)</span></div></button>
+    <button class="flip" aria-label="Traveling card"><div><span class="face"><span class="e">🌴</span><b>Exploring</b></span><span class="face back" style="--c:var(--pink)">Beaches, food trips, and new places around Cebu. (Edit me!)</span></div></button>
+  </div>
+
+  <h3 id="schedule" style="margin:2rem 0 .8rem;font-size:1.5rem">My hobby schedule 🗓️ <small style="font-weight:400;opacity:.7">when I make time for what I love</small></h3>
+  <div class="panel" id="schadd" hidden style="margin-bottom:1.2rem">
+    <div class="add-row" style="margin:0">
+      <select id="tDay" aria-label="Day"><option value="0">Monday</option><option value="1">Tuesday</option><option value="2">Wednesday</option><option value="3">Thursday</option><option value="4">Friday</option><option value="5">Saturday</option><option value="6">Sunday</option></select>
+      <input id="tTime" type="time" aria-label="Time">
+      <input id="tTask" placeholder="Hobby plan (movie night, gaming, photo walk...)" maxlength="100" aria-label="Task">
+      <button class="btn" id="tBtn">Add</button>
+      <button class="btn alt" id="tClear">Clear finished</button>
+    </div>
+  </div>
+  <div class="sched" id="sched"></div>
+
+  <h2 id="photos">My photo wall <small>pinned for everyone to see</small></h2>
+  <div class="tools"><button class="btn" id="add" hidden>Add photos</button><input type="file" id="file" accept="image/*" multiple hidden><p class="st" id="st" role="status"></p></div>
+  <div class="wall" id="wall"></div>
+  <p class="st" id="gempty" hidden>No photos yet. Add the first one!</p>
+  <dialog id="lb"><div class="lb"><img id="lbimg" alt=""><p class="pc" id="lbcap"></p><button class="btn alt" id="lbx">Close</button></div></dialog>
+  <dialog class="cd" id="capd"><b>Add a caption</b><input id="capin" maxlength="60" placeholder="Optional, like beach day" aria-label="Caption"><div class="row"><button class="btn alt" id="capskip">Skip</button><button class="btn" id="capok">Save</button></div></dialog>
+
+  <h2 id="watch">Movies, series &amp; anime 🍿 <small>my watch log</small></h2>
+  <div class="panel">
+    <div id="movadd" hidden>
+      <div class="add-row">
+        <input id="mTitle" placeholder="Title" maxlength="80" aria-label="Title">
+        <select id="mType" aria-label="Type"><option value="movie">Movie</option><option value="series">Series</option><option value="anime">Anime</option></select>
+        <select id="mStat" aria-label="Status"><option value="watched">Watched</option><option value="watching">Watching now</option><option value="plan">Plan to watch</option></select>
+        <select id="mRate" aria-label="Rating"><option value="0">No rating</option><option value="5">⭐⭐⭐⭐⭐</option><option value="4">⭐⭐⭐⭐</option><option value="3">⭐⭐⭐</option><option value="2">⭐⭐</option><option value="1">⭐</option></select>
+      </div>
+      <div class="add-row"><input id="mNote" placeholder="My notes (favorite scene, thoughts...)" maxlength="200" aria-label="Notes"><button class="btn" id="mBtn">Add</button></div>
+    </div>
+    <div class="mfilter" id="mfilter"><button class="on" data-f="all">All</button><button data-f="movie">Movies</button><button data-f="series">Series</button><button data-f="anime">Anime</button></div>
+    <ul class="movies" id="movies"></ul>
+    <p class="st" id="mempty">Nothing here yet.</p>
+  </div>
+
+  <h2 id="music">My playlist 🎧 <small>songs I love, tap play to listen</small></h2>
+  <div class="panel">
+    <div class="add-row" id="songadd" hidden>
+      <input id="sTitle" placeholder="Song title" maxlength="80" aria-label="Song title">
+      <input id="sArtist" placeholder="Artist" maxlength="60" aria-label="Artist">
+      <input id="sLink" placeholder="YouTube or Spotify link (optional)" maxlength="300" aria-label="Song link">
+      <button class="btn" id="sBtn">Add song</button>
+    </div>
+    <ul class="songs" id="songs"></ul>
+    <p class="st" id="sempty">No songs yet. Check back soon!</p>
+  </div>
+
+  <h2 id="places">Places I've explored 🗺️ <small>been there &amp; dreaming about</small></h2>
+  <div class="two">
+    <div class="panel"><h3>✅ Already visited</h3><ul class="pl" id="visited"></ul><p class="st" id="vempty">No places yet.</p></div>
+    <div class="panel"><h3>🧳 Not yet visited</h3><ul class="pl" id="wish"></ul><p class="st" id="wempty">No places yet.</p></div>
+  </div>
+  <div class="panel" id="placeadd" hidden style="margin-top:1.2rem">
+    <h3>Add a place</h3>
+    <div class="add-row" style="margin:0">
+      <input id="pName" placeholder="Place name" maxlength="80" aria-label="Place name">
+      <input id="pNote" placeholder="Note (what you did or want to try)" maxlength="160" aria-label="Note">
+      <select id="pStat" aria-label="Status"><option value="visited">Already visited</option><option value="wish">Not yet visited</option></select>
+      <button class="btn" id="pBtn">Add place</button>
+    </div>
+  </div>
+
+  <h2>Play &amp; learn</h2>
+  <div class="two">
+    <div class="panel">
+      <h3>Quick quiz: guess me</h3>
+      <div class="q" id="qtext"></div>
+      <div class="opts" id="qopts"></div>
+      <div class="res" id="qres"></div>
+    </div>
+    <div class="panel">
+      <h3>Fun facts</h3>
+      <div class="fact" id="fact">Press the button to meet a fact about me.</div>
+      <button class="btn" id="factbtn">Surprise me</button>
+      <h3 style="margin-top:1.2rem">Interests</h3>
+      <div class="chips"><span class="chip">Web design</span><span class="chip">Technology</span><span class="chip">Anime</span><span class="chip">Food</span><span class="chip">Basketball</span><span class="chip">Learning new things</span></div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:1.2rem">
+    <h3>Catch the stars ⭐</h3>
+    <p style="margin:0">Tap as many stars as you can in 10 seconds. Time: <b id="time">10</b>s · Score: <b id="score">0</b></p>
+    <div class="arena" id="arena"></div>
+    <div class="res" id="gmsg"></div>
+    <button class="btn" id="play">Start game</button>
+  </div>
+
+  <div class="secret" id="secret">
+    <h3 style="margin:0 0 .4rem;font-size:1.6rem">🎉 You found everything!</h3>
+    <p style="margin:0">Thanks for sticking around. Secret unlocked: I once spent a whole weekend fixing one missing semicolon. Worth it.</p>
+  </div>
+</div>
+
+<footer>Made with HTML, CSS &amp; JavaScript by <b id="me" style="cursor:pointer">Celo B. Wenceslao</b> · Cebu, Philippines<br><span id="hint">Psst… type <b>party</b> on your keyboard, or tap my name 3 times 🎈</span></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
